@@ -1,4 +1,4 @@
-#MIT License
+MIT License
 
 Copyright (c) [2025] [Tsega Kidanu, Siobhan Flood, Bora Ya Diul]
 
