@@ -1,6 +1,7 @@
 # DS4002---project-2
 
-Goal: This file serves as an orientation to everyone who comes to your repository, it should enable them to get their bearings. ● Use markdown headers to divide content. 
+Goal: This file serves as an orientation to everyone who comes to your repository, it should enable them to get their bearings. 
+● Use markdown headers to divide content. 
 
 ● Make an H2 (##) section explaining the contents of the repository 
 
