@@ -6,6 +6,7 @@ Goal: This file serves as an orientation to everyone who comes to your repositor
 ● Make an H2 (##) section explaining the contents of the repository 
 
 ● Section 1: Software and platform section ○ The type(s) of software you used for the project. 
+○ Python
 ○ The names of any add-on packages that need to be installed with the software. 
 ○ The platform (e.g., Windows, Mac, or Linux) you used. 
 
