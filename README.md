@@ -12,7 +12,7 @@
   
 ### Add-on Packages:
 - **Batesisn Structure Time Sereies (BSTS)**: This is a package for a specific time sereice predctive model that is found in R, whihc we used to build one of our predtivie models.
-- ** Seasonal Autoagressive Integrated Moving Average (SAMIRA)**: This is a pacakge for a specfic time sereies predivtive modesl that is found in R, which we used to build one of our predtive models.
+- **Seasonal Autoagressive Integrated Moving Average (SAMIRA)**: This is a pacakge for a specfic time sereies predivtive modesl that is found in R, which we used to build one of our predtive models.
 - **Pandas**: For data manipulation and cleaning.
 - **NumPy**: For numerical operations.
 - **Matplotlib** and **Seaborn**: For data visualization, including histograms and box plots.
