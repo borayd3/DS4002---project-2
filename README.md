@@ -64,7 +64,7 @@ We grouped the data by Trip Start Timestamp and aggregated the taxi rides by Tax
 
 Once the data was filtered and aggregated, we exported it as a CSV file. Named the file Taxi_Trips_Count.csv and saved it in our DATA folder within our GitHub repository.
 
-### Cleaning Data**
+### Cleaning Data
 
 The dataset had no missing information and the datatypes for both our columns were correct, so we did not have to clean the data after exporting it. The Trip Start Timestamp column was in DateTime format. The Taxi Ride Count column was a Float. 
 
@@ -140,7 +140,7 @@ We then reviewed the forecasted taxi ride counts for October 30th, 2023 from bot
 
 Based on the evaluation metrics, we assessed which model (SARIMA or BSTS) fit the data better and provided more accurate predictions.
 
-## Section 4: References!
+## Section 4: References
 
 [1] Andrés, David. “Error Metrics for Time Series Forecasting - Ml Pills.” ML Pills - Machine Learning Pills, 24 June 2023. [Online]. Available: mlpills.dev/time-series/error-metrics-for-time-series-forecasting/. [Accessed: March 5, 2025].
 [2] “ARIMA vs SARIMA Model.” GeeksforGeeks, 26 Mar. 2024. [Online]. Available: www.geeksforgeeks.org/arima-vs-sarima-model/. [Accessed: March 5, 2025].
