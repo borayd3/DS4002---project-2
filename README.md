@@ -24,7 +24,8 @@
 - **Mac** and **Windows**: These operating systems were used during development.
 
 
-### Map of Documentation
+
+## Section 2: Map of Documentation
 
 **DS-4002-GROUP-PROJECTS**
 - DATA (main folder)
@@ -40,7 +41,7 @@
 - README.md
 
 
-## Instructions for reproducing our results. 
+## Section 3: Instructions for reproducing our results. 
 
 
  ### Acquiring the Dataset
@@ -130,7 +131,7 @@ The Ljung-Box test should have a p-value greater than 0.05 to indicate no signif
 
 The evaluation metrics and comparison results can be found in the OUTPUT folder.
 
-### Step 6: Interpret the Results
+### Interpret the Results
 
 **Examine the Forecast**:
 
