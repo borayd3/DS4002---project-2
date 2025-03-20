@@ -142,14 +142,20 @@ We then reviewed the forecasted taxi ride counts for October 30th, 2023 from bot
 Based on the evaluation metrics, we assessed which model (SARIMA or BSTS) fit the data better and provided more accurate predictions.
 
 ## Section 4: References
-
-[1] Andrés, David. “Error Metrics for Time Series Forecasting - Ml Pills.” ML Pills - Machine Learning Pills, 24 June 2023. [Online]. Available: mlpills.dev/time-series/error-metrics-for-time-series-forecasting/. [Accessed: March 5, 2025].
+ [1] Andrés, David. “Error Metrics for Time Series Forecasting - Ml Pills.” ML Pills - Machine Learning Pills, 24 June 2023. [Online]. Available: mlpills.dev/time-series/error-metrics-for-time-series-forecasting/. [Accessed: March 5, 2025].
+ 
 [2] “ARIMA vs SARIMA Model.” GeeksforGeeks, 26 Mar. 2024. [Online]. Available: www.geeksforgeeks.org/arima-vs-sarima-model/. [Accessed: March 5, 2025].
+
 [3] City of Chicago. “Taxi Trips (2013-2023): City of Chicago: Data Portal.” Chicago Data Portal, 7 Feb. 2024. [Online]. Available: data.cityofchicago.org/Transportation/Taxi-Trips-2013-2023-/wrvz-psew/about_data. [Accessed: March 2, 2025].
+
 [4]  Hyndman, Rob J. et al. Forecasting: principles and practice, 2nd edition, OTexts, 2018. OTexts.com/fpp2.
+
 [5] “The Akaike Information Criterion.” Statistical Modeling and Forecasting, 23 June 2024. [Online]. Available: timeseriesreasoning.com/contents/akaike-information-criterion/. [Accessed: March 4, 2025].
+
 [6] Wu, Lea. “Predicting Chicago Taxi Trips with R Time Series Model - BSTS.” Towards Data Science, 21 Jan. 2025. [Online]. Available: towardsdatascience.com/predicting-chicago-taxi-trips-with-r-time-series-model-bsts-f857efe38bb4/. [Accessed: March 2, 2025].
+
 [7] “Sarima (Seasonal Autoregressive Integrated Moving Average).” GeeksforGeeks, GeeksforGeeks, 24 May 2024, www.geeksforgeeks.org/sarima-seasonal-autoregressive-integrated-moving-average/. 
+
 [8] “Sign In.” RPubs, [Online]. Available: rpubs.com/osazuwa/bsts. [Accessed 17 Mar. 2025]. 
 
  
