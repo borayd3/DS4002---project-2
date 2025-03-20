@@ -20,9 +20,12 @@ Each observation in the dataset corresponds to the total number of taxi rides th
 
 
 #### Figure 1: 
-This graph shows the distribution of
+[Rplot.pdf](https://github.com/user-attachments/files/19370677/Rplot.pdf)
+This graph shows the distribution of trip counts over the month of October.
+
 
 ### Descriptive Statistics:
+
 
 #### Summary Statistics for Taxi ID:
 - **Defintion**: The number of taxi rides that occurred at each timestamp
