@@ -6,7 +6,7 @@
 ### Software:
 - **R**: The primary programming language used for this project.
 - **R Studio**: The Integrated Development Environment (IDE) used to code and build both the BSTS and SAMIRA model.
-- **Chicago Data Portal Query**: THe Query function in the CHicago Data Portal, where we got our data from, was used to filter out for the coulmns and data we used.
+- **Chicago Data Portal Query**: The Query function in the Chicago Data Portal, where we got our data from, was used to filter out the columns and data we used.
 
   When conducting our analysis to assess which time series predictive model best predicts future ridership, we will employ two predictive models: a Seasonal Autoregressive Integrated Moving Average (SARIMA) model and a Bayesian Structure Time Series (BSTS) model.
   
