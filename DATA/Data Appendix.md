@@ -21,6 +21,7 @@ Each observation in the dataset corresponds to the total number of taxi rides th
 
 #### Figure 1: 
 [Rplot.pdf](https://github.com/user-attachments/files/19370677/Rplot.pdf)
+
 This graph shows the distribution of trip counts over the month of October.
 
 
@@ -46,6 +47,9 @@ This graph shows the distribution of trip counts over the month of October.
 | Std Dev| 129.0811 |
 
 #### Figure 1: 
+![RPLOT](https://github.com/user-attachments/assets/ffb8129c-052a-4799-9f00-fe78092793fb)
+
+This graph shows the differenced trip count returns over time, revealing variance and potential seasonal patterns even after stabilization.
 
 
 
