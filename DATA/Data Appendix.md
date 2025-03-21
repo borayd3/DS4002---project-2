@@ -18,9 +18,9 @@ Each observation in the dataset corresponds to the total number of taxi rides th
 - **missing values**: None
 - **method to final form**: The data was obtained from the Transportation section of the Chicago Data Portal, specifically the dataset "Taxi Trips (2013 - 2023)." We used the query function on the website to filter the data for trips occurring between October 1 and October 30, 2023.
 
+ #### Figure 1: 
 
-#### Figure 1: 
-[Rplot.pdf](https://github.com/user-attachments/files/19370677/Rplot.pdf)
+[Rplot.pdf](https://github.com/user-attachments/files/19393058/Rplot.pdf)
 
 This graph shows the distribution of trip counts over the month of October.
 
