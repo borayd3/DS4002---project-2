@@ -67,14 +67,21 @@ Once the data was filtered and aggregated, we exported it as a CSV file. Named t
 
 ### Cleaning Data
 
-The dataset had no missing information and the datatypes for both our columns were correct, so we did not have to clean the data after exporting it. The Trip Start Timestamp column was in DateTime format. The Taxi Ride Count column was a Float. 
+The dataset had no missing values, and the data types for our columns were correct, so minimal cleaning was required after exporting it. The Trip.Start.Timestamp column was already in DateTime format, and the Taxi.ID column, which represents the number of taxi rides at each timestamp, was in numeric format.
+
+**However, to prepare the data for analysis we cleaned the following in R**:
+
+- We converted Trip.Start.Timestamp to a standardized DateTime format (POSIXct) for consistency 
+
+- We renamed Trip.Start.Timestamp to datetime for clarity.
+
+- We created a date column by extracting only the date (year, month, and day) from datetime.
+
+- We created the floor_hour column by extracting only the hour from datetime to group trips by hour.
+
+- Then properly structured the dataset with the date and floor_hour as the index and the Trip_count as the variable of interest.
 
 ### Build the SARIMA Model
-
-**Prepare the Data**:
-
-We loaed the Taxi_Trips_Count.csv dataset from our DATA folder into R studio. 
-Then properly structured the dataset with the Trip Start Timestamp as the index and the Taxi Ride Count as the variable of interest.
 
 **Determine the SARIMA Parameters**:
 We used R in R studio for all the coding portions of our project, which can be found in our SCRIPTS folder in our github repo.
