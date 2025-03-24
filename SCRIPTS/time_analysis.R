@@ -61,7 +61,8 @@ test_data <- result %>%
   filter(date == "2023-10-30")
 
 head(train_data)
-tail(train_data) # Does not include 30th
+tail(train_data) # Does not include 30tH
+trips_training <- ts(train_data$Trip_Count, frequency=24,  start=1)
 ###############
 
 log_returns <- log(train_data$Trip_Count)
@@ -87,7 +88,7 @@ ggplot(log_returns_df, aes(x = Time, y = Log_Returns)) +
 
 #####################
 
-diff_fst_log <- diff(train_data$Trip_Count) # want to see if we could stabalize the mean, mean wasnt constant originally, 5 long peaks, 2 small oeaks. becaude subbtractine next time index by the one before, the difference will aocunt for any huge changes that might of happen. looking at this graph, still variance, most likey seasonal,
+diff_fst_log <- diff(trips_training) # want to see if we could stabalize the mean, mean wasnt constant originally, 5 long peaks, 2 small oeaks. becaude subbtractine next time index by the one before, the difference will aocunt for any huge changes that might of happen. looking at this graph, still variance, most likey seasonal,
 
 plot(diff_fst_log, xlab = 'Time', ylab = "First difference", type='l', main= "TS Plot of Differenced Trip Count Returns")
 
@@ -125,9 +126,156 @@ ggplot(ds_log_s_df, aes(x = Time, y = Diff)) +
   theme_economist() +                                 
   scale_colour_economist()
 
-diff_log_seasonal <- diff(ds_log_returns)
+#diff_log_seasonal <- diff(ds_log_returns)
+
+
+###############################################################################################################################################################################################################
+library(forecast)
+library(tseries)
+library(ggplot2)
+
+adf_test <- adf.test(trips_training)
+print(trips_training) #check for stationarity in time series
+
+auto_model <- auto.arima(trips_training)
+summary(auto_model)
+
+sarima_model <- Arima(trips_training, order=c(3,0,0), seasonal=c(0,1,1))
+# \ARIMA(2,0,0)(2,1,0)[24] 
+
+summary(sarima_model)
+
+forecasted_values <- forecast(sarima_model, h=24)
+
+autoplot(forecasted_values) + 
+  ggtitle("Sales Forecast for Next 24 hours") + 
+  xlab("Trips") + 
+  ylab("Sales") +
+  theme_minimal()
+
+actual_values <- test_data$Trip_Count
+time_vector <- time(forecasted_values$mean)
+
+library(ggplot2)
+
+autoplot(forecasted_values) +
+  geom_line(aes(x = time_vector, y = actual_values), color = "red", size = 1) +  # Overlay actual values
+  ggtitle("Sales Forecast for Next 24 Hours with Actual Values") +
+  xlab("Time") +
+  ylab("Trips") +
+  theme_minimal()
+
+preds <- as.vector(forecasted_values$mean)
+true_vals <- as.vector(test_data$Trip_Count)
+
+rmse_1 <- sqrt(mean((preds-true_vals)^2))
+rmse_1
+
+
+mape_1 <- (1/24)*sum((abs(true_vals-preds))/true_vals)*100
+mape_1
+
+mae_1 <- mean(abs(true_vals - preds))
+mae_1
+###############################################################################################################################################################################################################
+library (astsa)
+astsa::acf2(ds_log_s, main = "ACF Plot")
+#p, d, q
+# P, D , Q
+# d = 0 no 1st difference
+ # D = 1 did seasonal
+# p ar components is 3 5
+# q is my ma compnents is 1 or 23 
+# P is going to be using the acf plot its all but 1 and 2
+# Q is 3 or 1 because lag big make both for
+# cant do p and q because no exponential decay so no arma models, can only do pure model
+#pdq
+
+# no arma - q = 10, q = 23, Q = 1, Q = 3, 
+# ar is 3, 5, 11, 23
+# P = 1,2,3,4
+
+
+#dls_model <- sarima(trips_training, p = 5, d = 0, q = 0, P = 2, D = 1, Q = 0, S = 24)
+#preds <- astsa::sarima.for(trips_training, 5, 0, 0, 2, 1, 0, 24)
+#head(dls_model)
+# Plot the residuals of the SARIMA model
+#plot(dls_model$residuals)
+
+library(forecast)
+library(tseries)
+library(lubridate)
+library(dplyr)
+library(xts)
+library(bsts)
+
+
+# Convert to time-series object
+y_train <- ts(train_data$Trip_Count, frequency=24)  # Hourly data
+
+# Define state space model with trend and seasonal components
+ss <- AddLocalLinearTrend(list(), y_train)  # Trend Component
+ss <- AddSeasonal(ss, y_train, nseasons=24)  # Hourly Seasonality
+
+# Fit BSTS Model
+bsts_model <- bsts(y_train, 
+                   state.specification = ss, 
+                   niter = 1000)  # Number of iterations
+
+# Define forecast horizon
+horizon <- 24
+
+# Predict next 24 hours
+bsts_pred <- predict(bsts_model, horizon = horizon)
+
+# Extract median predictions from bsts_pred (ensure it is numeric)
+forecast_values <- bsts_pred$median
+
+# Create a DataFrame for visualization
+forecast_df <- data.frame(
+  datetime = seq(from = as.POSIXct("2023-10-30 00:00:00"), by = "hour", length.out = horizon),
+  predicted_ridership = forecast_values)
+
+# Plot Predictions
+library(ggplot2)
+ggplot(forecast_df, aes(x = datetime, y = predicted_ridership)) +
+  geom_line(color = "red", size = 1) +
+  ggtitle("BSTS Forecast for October 30th, 2023") +
+  xlab("Hour") + ylab("Predicted Ride Count")
+
+
+actual_values <- test_data$Trip_Count[1:horizon]
+
+# Ensure that bsts_pred is numeric before evaluating
+if (!is.numeric(forecast_values)) {
+  stop("bsts_pred is not numeric.")
+}
+
+# Evaluate RMSE, MAE, MAPE
+rmse_bsts <- sqrt(mean((actual_values - forecast_values)^2))
+mae_bsts <- mean(abs(actual_values - forecast_values))
+mape_bsts <- mean(abs((actual_values - forecast_values) / actual_values)) * 100
+
+
+
+# Print metrics
+print(rmse_bsts)
+print(mae_bsts)
+print(mape_bsts)
 
 
 
 
+##########
+#acf2(ds_log_s, main = "ACF Plot")
 
+# Step 2: Fit SARIMA model
+#dls_model <- sarima(trips_training, p = 5, d = 0, q = 0, P = 2, D = 1, Q = 0, S = 24)
+
+#preds <- sarima.for(trips_training, n.ahead = 10, p = 5, d = 0, q = 0, P = 2, D = 1, Q = 0, S = 24)
+
+#plot(dls_model$residuals)
+
+#Box.test(dls_model$residuals, lag = 24, type = "Ljung-Box")
+
+#acf(dls_model$residuals)
